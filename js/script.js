@@ -51,26 +51,9 @@ console.log(pokemonRepository.findByName('Bulbasaur')); // should return the Bul
 console.log(pokemonRepository.findByName('Charizard')); // should return undefined since Charizard is not in the list
 
 
-// Loop through each Pokémon object in the array
-for (let i = 0; i < pokemonList.length; i++) {
-  const pokemon = pokemonList[i];
-  
-  // Write the Pokémon name, type, height and - Wow, that's big! to the DOM
-  if (pokemon.height > 10) {
-    document.write(`${pokemon.name} (Type: ${pokemon.type}) (Height: ${pokemon.height}) - Wow, that's big!<br>`);
-  } else {
-    document.write(`${pokemon.name} (Type: ${pokemon.type}) (Height: ${pokemon.height})<br>`);4
-  }
-} 
-
-// Use a forEach() function instead of the for loop you have to iterate over the Pokémon in your pokemonList array in order to print the details of each one.
-// pokemonList.forEach(function(pokemon){
-//  console.log('Name: '+ pokemon.name +' '+'Type: '+ pokemon.type +' '+'Height: '+ pokemon.height)
-// }); 
-
 // Move the function declaration passed to forEach() to make things clearer 
 function myLoopFunction(pokemon){
   console.log('Name: '+ pokemon.name +' '+'Type: '+ pokemon.type +' '+'Height: '+ pokemon.height)
 };
-pokemonList.forEach(myLoopFunction);
+pokemonRepository.getAll().forEach(myLoopFunction);
 

@@ -1,17 +1,15 @@
-.pokemon-card {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .pokemon-card h3 {
-    margin-top: 0;
-  }
-  
-  .pokemon-card p {
-    margin-bottom: 0.5rem;
-  }
-  
-  
+.pokemon-list {
+  list-style: none;
+  padding: 0;
+}
+.pokemon-button {
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  font-size: 16px;
+}
+.pokemon-button:hover {
+  background-color: #ddd;
+}

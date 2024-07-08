@@ -1,11 +1,11 @@
 // scripts.js
 const pokemonRepository = (function() {
   let pokemonList = [
-    { name: 'Bulbasaur', type: ['Grass', 'Poison'], height: 7, imgUrl: 'path_to_bulbasaur_image' },
-    { name: 'Charmander', type: ['Fire'], height: 6, imgUrl: 'path_to_charmander_image' },
-    { name: 'Squirtle', type: ['Water'], height: 5, imgUrl: 'path_to_squirtle_image' },
-    { name: 'Pikachu', type: ['Electric'], height: 4, imgUrl: 'path_to_pikachu_image' },
-    { name: 'Snorlax', type: ['Normal'], height: 21, imgUrl: 'path_to_snorlax_image' },
+    { name: 'Bulbasaur', type: ['Grass', 'Poison'], height: 7, imgUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png' },
+    { name: 'Charmander', type: ['Fire'], height: 6, imgUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png' },
+    { name: 'Squirtle', type: ['Water'], height: 5, imgUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png' },
+    { name: 'Pikachu', type: ['Electric'], height: 4, imgUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png' },
+    { name: 'Snorlax', type: ['Normal'], height: 21, imgUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png' },
     // Add more Pokémon objects here as needed
   ];
 
@@ -39,22 +39,29 @@ const pokemonRepository = (function() {
     const closeButton = modal.querySelector('.close-button');
     closeButton.addEventListener('click', closeModal);
 
-    window.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        closeModal();
-      }
-    });
+    window.addEventListener('click', outsideClickListener);
+    document.addEventListener('keydown', keydownListener);
   }
 
   function closeModal() {
     const modal = document.querySelector('#pokemon-modal');
     modal.style.display = 'none';
+
+    window.removeEventListener('click', outsideClickListener);
+    document.removeEventListener('keydown', keydownListener);
+  }
+
+  function outsideClickListener(event) {
+    const modal = document.querySelector('#pokemon-modal');
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+
+  function keydownListener(event) {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
   }
 
   return {
@@ -92,3 +99,4 @@ function displayPokemonList() {
 }
 
 displayPokemonList();
+
